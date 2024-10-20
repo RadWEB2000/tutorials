@@ -1,0 +1,63 @@
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:2px;
+    height: 100vh;
+    flex-wrap: nowrap;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.item {
+    height: 450px;
+    width: 200px;
+}
+
+.image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.list .item {
+    cursor: pointer;
+    transition: .5s;
+    filter: brightness(0%);
+}
+
+.list .item:hover {
+    filter:brightness(100%);
+    transform:translateZ(200px);
+}
+
+.list .item:hover + * {
+    filter:brightness(60%);
+    transform:translateZ(150px) rotateY(40deg);
+}
+
+.list .item:hover + * + * {
+    filter:brightness(40%);
+    transform:translateZ(70px) rotateY(20deg);
+}
+
+.list .item:hover + * + * + * {
+    filter:brightness(20%);
+    transform:translateZ(30px) rotateY(10deg);
+}
+
+.list .item:has(+ *:hover){
+    filter:brightness(60%);
+    transform:translateZ(150px) rotateY(-40deg);
+}
+
+.list .item:has(+ * + *:hover){
+    filter:brightness(40%);
+    transform:translateZ(70px) rotateY(-20deg);
+}
+
+.list .item:has(+ * + * + *:hover){
+    filter:brightness(20%);
+    transform:translateZ(30px) rotateY(-10deg);
+}
